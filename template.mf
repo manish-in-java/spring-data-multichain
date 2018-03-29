@@ -1,0 +1,14 @@
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.springframework.data.multichain
+Bundle-Name: ${project.name}
+Bundle-Version: ${project.version}
+Bundle-RequiredExecutionEnvironment: J2SE-1.8
+Export-Template:
+  org.springframework.data.multichain.*;version="${project.version}"
+Import-Template:
+  com.google.gson.*;version="${gson.version}",
+  org.apache.http.*;version="${apache.http.client.version}",
+  org.springframework.*;version="${spring}",
+  org.springframework.data.*;version="${spring.data.commons.version}",
+  org.springframework.web.*;version="${spring.android.rest.version}",
+  org.w3c.*;version="0.0.0"
