@@ -15,11 +15,12 @@
  */
 package org.springframework.data.multichain.client.command;
 
-import org.springframework.util.StringUtils;
-
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Random;
+
+import static org.springframework.util.Assert.hasText;
+import static org.springframework.util.Assert.notNull;
 
 /**
  * Represents a request to a JSON-RPC call to a MultiChain RPC server.
@@ -30,25 +31,21 @@ public abstract class Request<T> extends Message
 
   private static final Random RANDOM = new SecureRandom();
 
-  private final String command;
+  private final Command command;
 
   /**
    * Creates a new request with a unique, randomly generated identifier.
    *
-   * @param command The name of the MultiChain JSON-RPC API command to
-   *                invoke.
-   * @throws NullPointerException if {@code method} is {@literal null} or
-   *                              blank.
+   * @param command The MultiChain JSON-RPC API command to invoke.
+   * @throws IllegalArgumentException if {@code method} is {@literal null} or
+   *                                  blank.
    */
-  Request(final String command)
+  Request(final Command command)
   {
     super();
 
     // Ensure that the command name has been specified.
-    if (StringUtils.isEmpty(command))
-    {
-      throw new NullPointerException("Command name must not be blank.");
-    }
+    notNull(command, "Command must not be null.");
 
     this.command = command;
 
@@ -62,7 +59,7 @@ public abstract class Request<T> extends Message
    */
   public final String getCommand()
   {
-    return command;
+    return command.name();
   }
 
   /**
@@ -84,5 +81,13 @@ public abstract class Request<T> extends Message
   private String getGeneratedID()
   {
     return new BigInteger(128, RANDOM).toString(16);
+  }
+
+  /**
+   * Represents a MultiChain API command.
+   */
+  protected enum Command
+  {
+    liststreamkeyitems
   }
 }
