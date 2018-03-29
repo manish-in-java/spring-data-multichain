@@ -17,6 +17,7 @@ package org.springframework.data.multichain;
 
 import com.google.gson.Gson;
 
+import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Random;
 
@@ -50,5 +51,26 @@ public interface UnitTest
   default int getInt(final int minimum, final int maximum)
   {
     return minimum + RANDOM.nextInt(maximum - minimum + 1);
+  }
+
+  /**
+   * Gets a {@link String} generated from 128 random bits.
+   *
+   * @return A randomly generated {@link String}.
+   */
+  default String getString()
+  {
+    return getString(128);
+  }
+
+  /**
+   * Gets a {@link String} generated from a specified number of random bits.
+   *
+   * @param bits The number of bits in the {@link String} to generate.
+   * @return A randomly generated {@link String}.
+   */
+  default String getString(final int bits)
+  {
+    return new BigInteger(bits, RANDOM).toString(16);
   }
 }

@@ -45,7 +45,7 @@ public class RequestTests
   @Test
   public void testGetCommand()
   {
-    assertNotNull(new SampleRequest().getCommand());
+    assertNotNull(new FooRequest().getCommand());
   }
 
   /**
@@ -56,13 +56,13 @@ public class RequestTests
   public void testGetID()
   {
     // Instantiate a request.
-    final Request first = new SampleRequest();
+    final Request first = new FooRequest();
 
     // Ensure that an identifier has been generated for the request.
     assertNotNull(first.getID());
 
     // Instantiate another request.
-    final Request second = new SampleRequest();
+    final Request second = new FooRequest();
 
     // Ensure that an identifier has been generated for the other request as
     // well.
@@ -97,12 +97,12 @@ public class RequestTests
 /**
  * Represents a request to some RPC call.
  */
-class SampleRequest extends Request<String>
+class FooRequest extends Request<String>
 {
   /*
    * (non-Javadoc)
    */
-  SampleRequest()
+  FooRequest()
   {
     super(Command.liststreamkeyitems);
   }

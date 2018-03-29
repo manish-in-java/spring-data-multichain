@@ -41,7 +41,7 @@ public class ResponseTests implements CommandTest
     final String json = String.format("{ \"id\" : %d, \"error\" : { \"code\" : -1, \"message\" : \"General error.\" } }", number);
 
     // Deserialize the JSON object.
-    final SampleResponse subject = deserialize(json, SampleResponse.class);
+    final FooResponse subject = deserialize(json, FooResponse.class);
 
     assertNotNull(subject);
     assertNotNull(subject.getID());
@@ -68,7 +68,7 @@ public class ResponseTests implements CommandTest
     final String json = String.format("{ \"id\" : %d, \"error\" : [] }", number);
 
     // Deserialize the JSON object.
-    deserialize(json, SampleResponse.class);
+    deserialize(json, FooResponse.class);
   }
 
   /**
@@ -86,7 +86,7 @@ public class ResponseTests implements CommandTest
     final String json = String.format("{ \"id\" : %d, \"error\" : null, \"result\" : \"Ok\" }", number);
 
     // Deserialize the JSON object.
-    final SampleResponse subject = deserialize(json, SampleResponse.class);
+    final FooResponse subject = deserialize(json, FooResponse.class);
 
     assertNotNull(subject);
     assertNull(subject.getError());
@@ -111,7 +111,7 @@ public class ResponseTests implements CommandTest
     final String json = String.format("{ \"id\" : %d, \"error\" : null }", number);
 
     // Deserialize the JSON object.
-    final SampleResponse subject = deserialize(json, SampleResponse.class);
+    final FooResponse subject = deserialize(json, FooResponse.class);
 
     assertNotNull(subject);
     assertNotNull(subject.getID());
@@ -135,7 +135,7 @@ public class ResponseTests implements CommandTest
     final String json = String.format("{ \"id\" : %d }", number);
 
     // Deserialize the JSON object.
-    final SampleResponse subject = deserialize(json, SampleResponse.class);
+    final FooResponse subject = deserialize(json, FooResponse.class);
 
     assertNotNull(subject);
     assertNotNull(subject.getID());
@@ -148,6 +148,6 @@ public class ResponseTests implements CommandTest
 /**
  * Represents a response to some RPC call.
  */
-class SampleResponse extends Response<String>
+class FooResponse extends Response<String>
 {
 }
