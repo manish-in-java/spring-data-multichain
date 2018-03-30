@@ -17,6 +17,8 @@ package org.springframework.data.multichain.client.command;
 
 import org.springframework.data.multichain.UnitTest;
 
+import java.util.Date;
+
 /**
  * Contract and utility methods for testing classes used for invoking
  * JSON-RPC commands on a MultiChain RPC server.
@@ -35,5 +37,15 @@ public interface CommandTest extends UnitTest
   default <T> T deserialize(final String json, final Class<T> type)
   {
     return SERIALIZER.fromJson(json, type);
+  }
+
+  /**
+   * Gets the current time in seconds since {@literal January 1, 1970 00:00}.
+   *
+   * @return The current time in seconds.
+   */
+  default long getTime()
+  {
+    return new Date().getTime() / 1000;
   }
 }

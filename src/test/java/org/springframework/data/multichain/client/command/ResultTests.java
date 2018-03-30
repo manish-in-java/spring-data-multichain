@@ -36,7 +36,9 @@ public class ResultTests implements CommandTest
   @Test
   public void testDeserialize()
   {
-    final FooResult subject = deserialize(String.format("{ \"txid\" : \"%s\", \"blocktime\" : %d }", getString(), new Date().getTime() / 1000)
+    final FooResult subject = deserialize(String.format("{ \"txid\" : \"%s\", \"blocktime\" : %d }"
+        , getString()
+        , new Date().getTime() / 1000)
         , FooResult.class);
 
     assertNotNull(subject);
