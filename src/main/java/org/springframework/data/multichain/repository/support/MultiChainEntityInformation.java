@@ -55,7 +55,7 @@ public class MultiChainEntityInformation<T> extends PersistentEntityInformation<
   /**
    * {@inheritDoc}
    */
-  public String getStreamName()
+  String getStreamName()
   {
     return entity.getStreamName();
   }
