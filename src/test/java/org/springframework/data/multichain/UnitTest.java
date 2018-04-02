@@ -30,6 +30,16 @@ public interface UnitTest
   Gson   SERIALIZER = new Gson();
 
   /**
+   * Gets {@literal true} or {@literal false} randomly.
+   *
+   * @return {@literal true} or {@literal false} randomly.
+   */
+  default boolean getBoolean()
+  {
+    return RANDOM.nextInt() % 2 == 0;
+  }
+
+  /**
    * Gets a random integer between {@code 1} and {@code 10}, both inclusive.
    *
    * @return A random integer between {@code 1} and {@code 10}.
