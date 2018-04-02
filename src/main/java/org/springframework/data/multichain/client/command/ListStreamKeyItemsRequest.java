@@ -19,7 +19,7 @@ package org.springframework.data.multichain.client.command;
 import static org.springframework.util.Assert.hasText;
 
 /**
- * Request for fetching items on the blockchain in a particular data stream
+ * Request for fetching items in a particular data stream on the blockchain
  * and tagged with a specified key.
  */
 public class ListStreamKeyItemsRequest extends Request<Object[]>
@@ -30,13 +30,13 @@ public class ListStreamKeyItemsRequest extends Request<Object[]>
   private final String stream;
 
   /**
-   * Creates a request for fetching items on the blockchain in a particular
-   * data stream and tagged with a specified key.
+   * Creates a request for fetching items in a particular data stream on the
+   * blockchain and tagged with a specified key.
    *
    * @param stream The name of the data stream to query.
    * @param key    The key for the items to query.
    * @throws IllegalArgumentException if {@code stream} or {@code key} is
-   *                                  {@literal null}.
+   *                                  blank.
    */
   public ListStreamKeyItemsRequest(final String stream, final String key)
   {
@@ -55,6 +55,11 @@ public class ListStreamKeyItemsRequest extends Request<Object[]>
   @Override
   public Object[] getParams()
   {
-    return new Object[] { stream, key };
+    return new Object[] {
+        stream  // The name of the data stream from which items should be fetched.
+        , key   // The logical key for which items should be fetched.
+        , false // Request non-verbose response.
+        , 2     // Request maximum of 2 items per key.
+    };
   }
 }
