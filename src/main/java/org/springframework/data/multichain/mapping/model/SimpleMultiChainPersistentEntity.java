@@ -88,7 +88,7 @@ public class SimpleMultiChainPersistentEntity<T>
     // the stream name has been specified through the annotation.
     return annotation != null && StringUtils.hasText(annotation.name())
            // Return the stream name specified through the annotation.
-           ? annotation.name()
+           ? annotation.name().trim()
            // Otherwise, return the lowercase version of the entity class's
            // simple name.
            : typeInformation.getType().getSimpleName().toLowerCase(Locale.ENGLISH);
