@@ -16,64 +16,11 @@
 
 package org.springframework.data.multichain.client.command;
 
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import org.springframework.data.multichain.client.support.UnixTimestampDateAdapter;
-
-import java.util.Date;
-
 /**
- * Result of fetching an item on the blockchain in a particular data stream
+ * Result for fetching an item in a particular data stream on the blockchain
  * and tagged with a specified key.
  */
-public class ListStreamKeyItemsResult extends Result
+public class ListStreamKeyItemsResult extends StreamItemResult
 {
-  private String data;
-  @SerializedName("txid")
-  private String id;
-  private String key;
-  @JsonAdapter(UnixTimestampDateAdapter.class)
-  @SerializedName("blocktime")
-  private Date   time;
-
-  /**
-   * Gets the item data. This is a hexadecimal representation of the
-   * binary version of the data.
-   *
-   * @return The item data.
-   */
-  public String getData()
-  {
-    return data;
-  }
-
-  /**
-   * Gets the unique item identifier.
-   *
-   * @return The unique item identifier.
-   */
-  public String getID()
-  {
-    return id;
-  }
-
-  /**
-   * Gets the logical key associated with the data.
-   *
-   * @return The logical key associated with the data.
-   */
-  public String getKey()
-  {
-    return key;
-  }
-
-  /**
-   * Gets the date and time at which the item was added to the blockchain.
-   *
-   * @return The date and time at which the item was added to the blockchain.
-   */
-  public Date getTime()
-  {
-    return time;
-  }
+  private static final long serialVersionUID = 1L;
 }

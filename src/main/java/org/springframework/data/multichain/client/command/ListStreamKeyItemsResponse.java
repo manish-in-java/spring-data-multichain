@@ -19,7 +19,7 @@ package org.springframework.data.multichain.client.command;
 import java.util.List;
 
 /**
- * Response for fetching items on the blockchain in a particular data stream
+ * Response for fetching items in a particular data stream on the blockchain
  * and tagged with a specified key.
  */
 public class ListStreamKeyItemsResponse extends Response<List<ListStreamKeyItemsResult>>
