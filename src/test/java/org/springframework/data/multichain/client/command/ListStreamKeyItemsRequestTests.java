@@ -48,7 +48,7 @@ public class ListStreamKeyItemsRequestTests implements CommandTest
     final Object[] subject = new ListStreamKeyItemsRequest(stream, key).getParams();
 
     assertNotNull(subject);
-    assertEquals(2, subject.length);
+    assertEquals(4, subject.length);
     assertEquals(stream, subject[0]);
     assertEquals(key, subject[1]);
   }
