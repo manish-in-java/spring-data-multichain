@@ -37,8 +37,11 @@ import static org.springframework.util.Assert.hasText;
 import static org.springframework.util.Assert.isTrue;
 
 /**
- * Abstraction using which all communication with a MultiChain RPC server
- * is managed.
+ * Abstraction using which all communication with a MultiChain JSON-RPC server
+ * is managed. Using {@link RestTemplate} provided by the Spring framework
+ * internally to exchange request and response objects with the RPC server.
+ * Serialization and deserialization of Java objects to and from JSON is
+ * managed using the Gson library.
  */
 public class MultiChainTemplate implements MultiChainClient
 {
