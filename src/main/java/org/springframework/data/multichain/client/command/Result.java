@@ -21,7 +21,7 @@ import java.io.Serializable;
  * Represents the result of a particular JSON-RPC call to a MultiChain RPC
  * server.
  */
-public abstract class Result implements Serializable
+abstract class Result implements Serializable
 {
   private static final long serialVersionUID = 1L;
 }
