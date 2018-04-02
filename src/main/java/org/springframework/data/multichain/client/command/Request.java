@@ -19,7 +19,6 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Random;
 
-import static org.springframework.util.Assert.hasText;
 import static org.springframework.util.Assert.notNull;
 
 /**
@@ -57,7 +56,7 @@ public abstract class Request<T> extends Message
    *
    * @return The name of the MultiChain JSON-RPC API command to invoke.
    */
-  public final String getCommand()
+  public String getCommand()
   {
     return command.name();
   }
