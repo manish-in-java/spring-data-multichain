@@ -15,6 +15,8 @@
  */
 package org.springframework.data.multichain.client.command;
 
+import java.beans.Transient;
+
 /**
  * Represents a response to a JSON-RPC call to a MultiChain RPC server.
  */
@@ -43,5 +45,17 @@ public abstract class Response<T> extends Message
   public T getResult()
   {
     return result;
+  }
+
+  /**
+   * Gets whether this response is free of errors.
+   *
+   * @return {@literal true} if this response is free of errors,
+   * {@literal false} otherwise.
+   */
+  @Transient
+  public boolean isOk()
+  {
+    return getError() == null;
   }
 }
