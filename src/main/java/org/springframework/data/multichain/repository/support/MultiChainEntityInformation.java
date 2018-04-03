@@ -21,42 +21,39 @@ import org.springframework.data.repository.core.support.PersistentEntityInformat
 
 /**
  * MultiChain specific implementation of {@link AbstractEntityInformation}
- * that provides access to metadata about an entity class so that entity
- * instances can be serialized to and deserialized from a MultiChain data
- * stream.
+ * that provides access to metadata about an persistentEntity class so that
+ * entity instances can be serialized to and deserialized from a MultiChain
+ * data stream.
  *
- * @param <T> The domain entity type.
+ * @param <T> The domain persistentEntity type.
  */
 public class MultiChainEntityInformation<T> extends PersistentEntityInformation<T, String>
 {
-  private final MultiChainPersistentEntity<T> entity;
+  private final MultiChainPersistentEntity<T> persistentEntity;
 
   /**
    * Creates entity metadata, given the entity type.
    *
-   * @param entity The type of entity for which metadata needs to be created.
-   * @throws NullPointerException if {@code entity} is {@literal null}.
+   * @param persistentEntity The type of entity for which metadata needs to be
+   *                         created.
+   * @throws NullPointerException if {@code persistentEntity} is
+   *                              {@literal null}.
    */
-  public MultiChainEntityInformation(final MultiChainPersistentEntity<T> entity)
+  public MultiChainEntityInformation(final MultiChainPersistentEntity<T> persistentEntity)
   {
-    super(entity);
+    super(persistentEntity);
 
-    this.entity = entity;
+    this.persistentEntity = persistentEntity;
   }
 
   /**
-   * {@inheritDoc}
-   */
-  public String getIdAttribute()
-  {
-    return entity.getIdProperty().getName();
-  }
-
-  /**
-   * {@inheritDoc}
+   * Gets the name of the data stream to which entities should be persisted.
+   *
+   * @return The name of the data stream to which entities should be
+   * persisted.
    */
   String getStreamName()
   {
-    return entity.getStreamName();
+    return persistentEntity.getStreamName();
   }
 }

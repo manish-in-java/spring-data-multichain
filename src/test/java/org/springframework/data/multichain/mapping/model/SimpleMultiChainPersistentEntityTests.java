@@ -19,12 +19,10 @@ package org.springframework.data.multichain.mapping.model;
 import org.junit.Test;
 import org.springframework.data.multichain.annotation.MultiChainStream;
 import org.springframework.data.util.ClassTypeInformation;
-import org.springframework.util.StringUtils;
 
 import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 /**
  * Unit tests for {@link SimpleMultiChainPersistentEntity}.
@@ -49,7 +47,7 @@ public class SimpleMultiChainPersistentEntityTests
   @Test
   public void testGetStreamNameWithoutAnnotation()
   {
-    assertFalse(StringUtils.isEmpty(new SimpleMultiChainPersistentEntity<>(ClassTypeInformation.from(Alpha.class)).getStreamName()));
+    assertEquals(Alpha.class.getSimpleName().toLowerCase(Locale.ENGLISH), new SimpleMultiChainPersistentEntity<>(ClassTypeInformation.from(Alpha.class)).getStreamName());
   }
 
   /**

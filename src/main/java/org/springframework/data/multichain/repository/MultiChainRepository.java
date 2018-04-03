@@ -15,6 +15,10 @@
  */
 package org.springframework.data.multichain.repository;
 
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DataRetrievalFailureException;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
@@ -27,26 +31,38 @@ import org.springframework.data.repository.Repository;
 public interface MultiChainRepository<T> extends Repository<T, String>
 {
   /**
-   * Finds whether an entity with a given logical key exists.
+   * Finds whether an entity with a given unique identifier exists.
    *
-   * @param key The logical key of the entity to check; must not be
-   *            {@literal null}.
-   * @return {@literal true} if an entity with the given key exists,
+   * @param id The unique identifier for the entity to find; must not be
+   *           {@literal null}.
+   * @return {@literal true} if an entity with the given identifier exists,
    * {@literal false} otherwise.
-   * @throws IllegalArgumentException if {@code key} is {@literal null}.
+   * @throws IllegalArgumentException               if {@code id} is blank.
+   * @throws DataRetrievalFailureException          if an error occurs while
+   *                                                attempting to find the
+   *                                                entity.
+   * @throws IncorrectResultSizeDataAccessException if more than one entity
+   *                                                with the specified
+   *                                                identifier is found.
    */
-  boolean existsByKey(String key);
+  boolean exists(String id);
 
   /**
-   * Finds an entity by its logical key.
+   * Finds an entity by its unique identifier.
    *
-   * @param key The logical key of the entity to find; must not be
-   *            {@literal null}.
-   * @return The entity with the given key or {@literal null} if none
+   * @param id The unique identifier for the entity to find; must not be
+   *           {@literal null}.
+   * @return The entity with the given identifier or {@literal null} if none
    * found.
-   * @throws IllegalArgumentException if {@code id} is {@literal null}.
+   * @throws IllegalArgumentException               if {@code id} is blank.
+   * @throws DataRetrievalFailureException          if an error occurs while
+   *                                                attempting to find the
+   *                                                entity.
+   * @throws IncorrectResultSizeDataAccessException if more than one entity
+   *                                                with the specified
+   *                                                identifier is found.
    */
-  T findByKey(String key);
+  T findOne(String id);
 
   /**
    * Saves a given entity. Use the returned instance for further operations as
@@ -54,6 +70,12 @@ public interface MultiChainRepository<T> extends Repository<T, String>
    *
    * @param entity The entity to save.
    * @return The saved entity.
+   * @throws DataIntegrityViolationException if a unique identifier is not
+   *                                         available for the entity to
+   *                                         save.
+   * @throws DuplicateKeyException           if an entity with the specified
+   *                                         identifier already exists in
+   *                                         the data stream.
    */
   <S extends T> S save(S entity);
 
