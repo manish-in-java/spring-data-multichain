@@ -21,11 +21,11 @@ import org.springframework.data.repository.core.support.PersistentEntityInformat
 
 /**
  * MultiChain specific implementation of {@link AbstractEntityInformation}
- * that provides access to metadata about an persistentEntity class so that
- * entity instances can be serialized to and deserialized from a MultiChain
- * data stream.
+ * that provides access to metadata about an entity class so that entity
+ * instances can be serialized to and deserialized from a MultiChain data
+ * stream.
  *
- * @param <T> The domain persistentEntity type.
+ * @param <T> The domain entity type.
  */
 public class MultiChainEntityInformation<T> extends PersistentEntityInformation<T, String>
 {
