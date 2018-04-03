@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package org.springframework.data.multichain.client.command;
+package org.springframework.data.multichain.server.command;
 
 import java.util.List;
 
 /**
  * Response for fetching items in a particular data stream on the blockchain
- * and tagged with a specified key.
+ * and tagged with a specified key. The items in the specified data stream and
+ * matching the provided key are included in the response.
  */
 public class ListStreamKeyItemsResponse extends Response<List<ListStreamKeyItemsResult>>
 {

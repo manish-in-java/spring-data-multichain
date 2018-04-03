@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.data.multichain.client.command;
+package org.springframework.data.multichain.server.command;
 
 import org.springframework.data.multichain.UnitTest;
 

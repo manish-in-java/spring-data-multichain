@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.data.multichain.client.command;
 
-import java.io.Serializable;
+package org.springframework.data.multichain.server.command;
 
 /**
- * Represents the result of a particular JSON-RPC call to a MultiChain RPC
- * server.
+ * Result for fetching an item in a particular data stream on the blockchain
+ * and tagged with a specified key.
  */
-abstract class Result implements Serializable
+public class ListStreamKeyItemsResult extends StreamItemResult
 {
   private static final long serialVersionUID = 1L;
 }

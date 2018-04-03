@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.data.multichain.client.support;
+package org.springframework.data.multichain.server.support;
 
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;

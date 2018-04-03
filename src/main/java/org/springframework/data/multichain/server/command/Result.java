@@ -13,9 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.springframework.data.multichain.server.command;
+
+import java.io.Serializable;
 
 /**
- * Provides helper classes for interacting with a MultiChain RPC server
- * using the JSON-RPC API.
+ * Represents the result of a particular JSON-RPC call to a MultiChain RPC
+ * server.
  */
-package org.springframework.data.multichain.client.support;
+abstract class Result implements Serializable
+{
+  private static final long serialVersionUID = 1L;
+}

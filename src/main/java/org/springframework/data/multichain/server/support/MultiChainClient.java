@@ -16,8 +16,8 @@
 
 package org.springframework.data.multichain.server.support;
 
-import org.springframework.data.multichain.client.command.Request;
-import org.springframework.data.multichain.client.command.Response;
+import org.springframework.data.multichain.server.command.Request;
+import org.springframework.data.multichain.server.command.Response;
 
 /**
  * Contract for communicating with a MultiChain RPC server.

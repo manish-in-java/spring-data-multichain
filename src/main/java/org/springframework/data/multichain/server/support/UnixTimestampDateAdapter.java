@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.data.multichain.client.support;
+package org.springframework.data.multichain.server.support;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;

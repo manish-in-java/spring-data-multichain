@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.springframework.data.multichain.client.command;
+package org.springframework.data.multichain.server.command;
 
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import org.junit.Test;
-import org.springframework.data.multichain.client.support.UnixTimestampDateAdapter;
+import org.springframework.data.multichain.server.support.UnixTimestampDateAdapter;
 
 import java.util.Date;
 

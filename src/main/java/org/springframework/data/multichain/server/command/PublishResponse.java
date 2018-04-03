@@ -13,37 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.data.multichain.client.command;
 
-import java.io.Serializable;
+package org.springframework.data.multichain.server.command;
 
 /**
- * Represents a message exchanged between a MultiChain RPC server and a client
- * application.
+ * Response for publishing an item to a particular data stream on the blockchain
+ * and tagged with a specified key. The item identifier is returned as the
+ * response.
  */
-public abstract class Message implements Serializable
+public class PublishResponse extends Response<String>
 {
   private static final long serialVersionUID = 1L;
-
-  private String id;
-
-  /**
-   * Gets a (potentially unique) identifier for the message.
-   *
-   * @return An identifier for the message.
-   */
-  public String getID()
-  {
-    return id;
-  }
-
-  /**
-   * Sets a (potentially unique) identifier for the message.
-   *
-   * @param id An identifier for the message.
-   */
-  void setID(final String id)
-  {
-    this.id = id;
-  }
 }

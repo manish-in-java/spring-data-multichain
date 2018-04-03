@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.data.multichain.client.command;
+package org.springframework.data.multichain.server.command;
 
 import org.junit.Test;
 

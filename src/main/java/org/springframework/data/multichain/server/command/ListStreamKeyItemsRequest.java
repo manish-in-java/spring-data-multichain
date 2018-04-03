@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package org.springframework.data.multichain.client.command;
+package org.springframework.data.multichain.server.command;
 
 import static org.springframework.util.Assert.hasText;
 
 /**
  * Request for fetching items in a particular data stream on the blockchain
- * and tagged with a specified key.
+ * and tagged with a specified key. The data stream name and the key for the
+ * items to fetch are included in the request.
  */
 public class ListStreamKeyItemsRequest extends Request<Object[]>
 {

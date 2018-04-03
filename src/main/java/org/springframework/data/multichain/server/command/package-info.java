@@ -17,4 +17,4 @@
 /**
  * Provides classes for invoking JSON-RPC commands on a MultiChain RPC server.
  */
-package org.springframework.data.multichain.client.command;
+package org.springframework.data.multichain.server.command;
