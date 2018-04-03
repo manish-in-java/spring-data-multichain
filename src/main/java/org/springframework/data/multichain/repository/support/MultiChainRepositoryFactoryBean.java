@@ -16,7 +16,7 @@
 package org.springframework.data.multichain.repository.support;
 
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.data.multichain.server.support.MultiChainClient;
+import org.springframework.data.multichain.server.MultiChainClient;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;

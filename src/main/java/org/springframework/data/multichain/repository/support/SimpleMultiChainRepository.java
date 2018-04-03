@@ -18,11 +18,11 @@ package org.springframework.data.multichain.repository.support;
 import com.google.gson.Gson;
 import org.springframework.dao.*;
 import org.springframework.data.multichain.repository.MultiChainRepository;
+import org.springframework.data.multichain.server.MultiChainClient;
 import org.springframework.data.multichain.server.command.ListStreamKeyItemsRequest;
 import org.springframework.data.multichain.server.command.ListStreamKeyItemsResponse;
 import org.springframework.data.multichain.server.command.PublishRequest;
 import org.springframework.data.multichain.server.command.PublishResponse;
-import org.springframework.data.multichain.server.support.MultiChainClient;
 import org.springframework.util.StringUtils;
 
 import java.math.BigInteger;

@@ -18,7 +18,7 @@ package org.springframework.data.multichain.repository.support;
 import org.springframework.data.multichain.mapping.context.MultiChainMappingContext;
 import org.springframework.data.multichain.repository.MultiChainEntityInformationProvider;
 import org.springframework.data.multichain.repository.MultiChainRepository;
-import org.springframework.data.multichain.server.support.MultiChainClient;
+import org.springframework.data.multichain.server.MultiChainClient;
 import org.springframework.data.repository.core.RepositoryInformation;
 import org.springframework.data.repository.core.RepositoryMetadata;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;

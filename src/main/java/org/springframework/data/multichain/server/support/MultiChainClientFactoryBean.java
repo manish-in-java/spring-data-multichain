@@ -16,6 +16,7 @@
 package org.springframework.data.multichain.server.support;
 
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.data.multichain.server.MultiChainClient;
 
 /**
  * Creates a {@link MultiChainTemplate} based on the configuration.

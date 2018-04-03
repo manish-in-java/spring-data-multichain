@@ -1,0 +1,2 @@
+http\://www.springframework.org/schema/data/multichain/spring-multichain-1.0.xsd=org/springframework/data/multichain/config/spring-multichain-1.0.xsd
+http\://www.springframework.org/schema/data/multichain/spring-multichain.xsd=org/springframework/data/multichain/config/spring-multichain-1.0.xsd

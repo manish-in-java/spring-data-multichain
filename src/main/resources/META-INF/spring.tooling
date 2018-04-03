@@ -1,0 +1,4 @@
+# Tooling related information for the MultiChain namespace
+http\://www.springframework.org/schema/data/multichain@name=MultiChain Namespace
+http\://www.springframework.org/schema/data/multichain@prefix=MultiChain
+http\://www.springframework.org/schema/data/multichain@icon=org/springframework/jdbc/config/spring-jdbc.gif

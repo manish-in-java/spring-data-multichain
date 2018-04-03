@@ -15,6 +15,8 @@
  */
 package org.springframework.data.multichain.server.support;
 
+import org.springframework.data.multichain.server.MultiChainClient;
+
 import static org.springframework.util.Assert.hasText;
 import static org.springframework.util.Assert.isTrue;
 

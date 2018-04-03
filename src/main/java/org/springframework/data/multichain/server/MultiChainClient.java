@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.data.multichain.server.support;
+package org.springframework.data.multichain.server;
 
 import org.springframework.data.multichain.server.command.Request;
 import org.springframework.data.multichain.server.command.Response;

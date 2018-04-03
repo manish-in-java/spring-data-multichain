@@ -23,6 +23,7 @@ import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.springframework.data.multichain.server.MultiChainClient;
 import org.springframework.data.multichain.server.command.Request;
 import org.springframework.data.multichain.server.command.Response;
 import org.springframework.http.client.ClientHttpRequestFactory;
