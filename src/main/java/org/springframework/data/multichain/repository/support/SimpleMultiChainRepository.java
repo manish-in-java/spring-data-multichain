@@ -42,9 +42,9 @@ import static org.springframework.util.Assert.notNull;
  */
 public class SimpleMultiChainRepository<T> implements MultiChainRepository<T>
 {
-  private final MultiChainEntityInformation<T> entityInformation;
-  private final MultiChainClient               multiChainClient;
-  private final Gson                           serializer;
+  private final MultiChainEntityInformation<T, String> entityInformation;
+  private final MultiChainClient                       multiChainClient;
+  private final Gson                                   serializer;
 
   /**
    * Creates a repository for an entity type using metadata for the type and
@@ -60,7 +60,7 @@ public class SimpleMultiChainRepository<T> implements MultiChainRepository<T>
    *                                  {@code multiChainClient} is
    *                                  {@literal null}.
    */
-  public SimpleMultiChainRepository(final MultiChainEntityInformation<T> entityInformation
+  public SimpleMultiChainRepository(final MultiChainEntityInformation<T, String> entityInformation
       , final MultiChainClient multiChainClient)
   {
     notNull(entityInformation, "MultiChainEntityInformation must not be null.");

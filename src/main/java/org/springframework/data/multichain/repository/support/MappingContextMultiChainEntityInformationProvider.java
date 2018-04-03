@@ -21,6 +21,8 @@ import org.springframework.data.multichain.mapping.MultiChainPersistentProperty;
 import org.springframework.data.multichain.repository.MultiChainEntityInformationProvider;
 import org.springframework.util.Assert;
 
+import java.io.Serializable;
+
 /**
  * Provides metadata about a domain entity persisted to a MultiChain data
  * stream using a {@link MappingContext}.
@@ -46,7 +48,7 @@ public class MappingContextMultiChainEntityInformationProvider implements MultiC
    */
   @Override
   @SuppressWarnings("unchecked")
-  public <T> MultiChainEntityInformation<T> getEntityInformation(final Class<T> domainClass)
+  public <T, ID extends Serializable> MultiChainEntityInformation<T, ID> getEntityInformation(final Class<T> domainClass)
   {
     final MultiChainPersistentEntity<T> persistentEntity = (MultiChainPersistentEntity<T>) context.getPersistentEntity(domainClass);
 
