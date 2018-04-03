@@ -15,7 +15,6 @@
  */
 
 /**
- * Provides classes and interfaces for interacting with a MultiChain RPC server
- * using the JSON-RPC API.
+ * Provides classes for configuring and initializing MultiChain repositories.
  */
-package org.springframework.data.multichain.client;
+package org.springframework.data.multichain.repository.config;
