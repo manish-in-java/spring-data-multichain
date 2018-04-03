@@ -63,6 +63,7 @@
           <xsd:attribute name="host" type="xsd:string"/>
           <xsd:attribute name="password" type="xsd:string"/>
           <xsd:attribute name="port" type="xsd:int"/>
+          <xsd:attribute name="secure" type="xsd:boolean" default="false"/>
           <xsd:attribute name="username" type="xsd:string" default="multichainrpc"/>
         </xsd:extension>
       </xsd:complexContent>

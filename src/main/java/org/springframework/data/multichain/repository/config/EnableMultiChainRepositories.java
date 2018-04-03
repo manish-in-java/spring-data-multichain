@@ -75,6 +75,12 @@ public @interface EnableMultiChainRepositories
   String multiChainClient() default "multiChainClient";
 
   /**
+   * Configures the location of where to find the Spring Data named queries
+   * properties file.
+   */
+  String namedQueriesLocation() default "";
+
+  /**
    * <p>
    * Configure the repository base class to use to create repository proxies
    * for this particular configuration.

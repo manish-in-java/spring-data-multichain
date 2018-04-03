@@ -15,10 +15,18 @@
  */
 package org.springframework.data.multichain.repository.config;
 
+import org.springframework.beans.factory.support.AbstractBeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.data.multichain.annotation.MultiChainStream;
+import org.springframework.data.multichain.mapping.context.MultiChainMappingContext;
 import org.springframework.data.multichain.repository.MultiChainRepository;
 import org.springframework.data.multichain.repository.support.MultiChainRepositoryFactoryBean;
+import org.springframework.data.repository.config.AnnotationRepositoryConfigurationSource;
 import org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport;
+import org.springframework.data.repository.config.RepositoryConfigurationSource;
+import org.springframework.data.repository.config.XmlRepositoryConfigurationSource;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;
@@ -42,6 +50,39 @@ public class MultiChainRepositoryConfigurationExtension extends RepositoryConfig
   public String getRepositoryFactoryClassName()
   {
     return MultiChainRepositoryFactoryBean.class.getName();
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void postProcess(final BeanDefinitionBuilder builder, final AnnotationRepositoryConfigurationSource config)
+  {
+    builder.addPropertyReference("multiChainClient", "multiChainClient");
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void postProcess(final BeanDefinitionBuilder builder, final XmlRepositoryConfigurationSource config)
+  {
+    builder.addPropertyReference("multiChainClient", config.getElement().getAttribute("multichain-client-ref"));
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void registerBeansForRoot(final BeanDefinitionRegistry registry, final RepositoryConfigurationSource config)
+  {
+    super.registerBeansForRoot(registry, config);
+
+    RootBeanDefinition definition = new RootBeanDefinition(MultiChainMappingContext.class);
+    definition.setRole(AbstractBeanDefinition.ROLE_INFRASTRUCTURE);
+    definition.setSource(config.getSource());
+
+    registerIfNotAlreadyRegistered(definition, registry, "multiChainMappingContext", definition);
   }
 
   /**

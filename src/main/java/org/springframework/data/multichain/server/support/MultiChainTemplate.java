@@ -69,7 +69,7 @@ public class MultiChainTemplate implements MultiChainClient
    *                                  {@code password} is {@literal null} or
    *                                  blank, or if {@code port} is invalid.
    */
-  MultiChainTemplate(final String host
+  public MultiChainTemplate(final String host
       , final int port
       , final String username
       , final String password
