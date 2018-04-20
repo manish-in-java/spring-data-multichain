@@ -21,12 +21,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.data.mapping.model.Property;
 import org.springframework.data.mapping.model.SimpleTypeHolder;
 import org.springframework.data.multichain.mapping.MultiChainPersistentEntity;
 import org.springframework.data.util.ClassTypeInformation;
-
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -38,13 +36,10 @@ import static org.junit.Assert.assertNull;
 public class SimpleMultiChainPersistentPropertyTests
 {
   @Mock
-  private PropertyDescriptor descriptor;
-
-  @Mock
   private SimpleTypeHolder holder;
 
   private static MultiChainPersistentEntity<?> entity;
-  private static Field                         field;
+  private static Property                      property;
 
   /**
    * Sets up objects required to run the tests.
@@ -53,7 +48,7 @@ public class SimpleMultiChainPersistentPropertyTests
   public static void setup() throws NoSuchFieldException
   {
     entity = new SimpleMultiChainPersistentEntity<>(ClassTypeInformation.from(Foo.class));
-    field = Foo.class.getDeclaredField("bar");
+    property = Property.of(entity.getTypeInformation(), Foo.class.getDeclaredField("bar"));
   }
 
   /**
@@ -63,7 +58,7 @@ public class SimpleMultiChainPersistentPropertyTests
   @Test
   public void testCreateAssociation()
   {
-    assertNull(new SimpleMultiChainPersistentProperty(field, descriptor, entity, holder).createAssociation());
+    assertNull(new SimpleMultiChainPersistentProperty(property, entity, holder).createAssociation());
   }
 
   /**
@@ -73,7 +68,7 @@ public class SimpleMultiChainPersistentPropertyTests
   @Test
   public void testIsAssociation()
   {
-    assertFalse(new SimpleMultiChainPersistentProperty(field, descriptor, entity, holder).isAssociation());
+    assertFalse(new SimpleMultiChainPersistentProperty(property, entity, holder).isAssociation());
   }
 }
 

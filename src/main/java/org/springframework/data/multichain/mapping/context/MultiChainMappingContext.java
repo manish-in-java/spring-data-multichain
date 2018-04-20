@@ -16,15 +16,13 @@
 package org.springframework.data.multichain.mapping.context;
 
 import org.springframework.data.mapping.context.AbstractMappingContext;
+import org.springframework.data.mapping.model.Property;
 import org.springframework.data.mapping.model.SimpleTypeHolder;
 import org.springframework.data.multichain.mapping.MultiChainPersistentEntity;
 import org.springframework.data.multichain.mapping.MultiChainPersistentProperty;
 import org.springframework.data.multichain.mapping.model.SimpleMultiChainPersistentEntity;
 import org.springframework.data.multichain.mapping.model.SimpleMultiChainPersistentProperty;
 import org.springframework.data.util.TypeInformation;
-
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
 
 /**
  * MultiChain specific implementation of
@@ -48,11 +46,10 @@ public class MultiChainMappingContext extends AbstractMappingContext<MultiChainP
    * {@inheritDoc}
    */
   @Override
-  protected MultiChainPersistentProperty createPersistentProperty(final Field field
-      , final PropertyDescriptor descriptor
+  protected MultiChainPersistentProperty createPersistentProperty(final Property property
       , final MultiChainPersistentEntity<?> owner
       , final SimpleTypeHolder simpleTypeHolder)
   {
-    return new SimpleMultiChainPersistentProperty(field, descriptor, owner, simpleTypeHolder);
+    return new SimpleMultiChainPersistentProperty(property, owner, simpleTypeHolder);
   }
 }

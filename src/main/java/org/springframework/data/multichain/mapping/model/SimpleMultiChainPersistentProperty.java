@@ -18,11 +18,9 @@ package org.springframework.data.multichain.mapping.model;
 import org.springframework.data.mapping.Association;
 import org.springframework.data.mapping.PersistentEntity;
 import org.springframework.data.mapping.model.AnnotationBasedPersistentProperty;
+import org.springframework.data.mapping.model.Property;
 import org.springframework.data.mapping.model.SimpleTypeHolder;
 import org.springframework.data.multichain.mapping.MultiChainPersistentProperty;
-
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
 
 /**
  * MultiChain specific {@link org.springframework.data.mapping.PersistentProperty}
@@ -36,21 +34,18 @@ public class SimpleMultiChainPersistentProperty
   /**
    * Creates metadata about a persistent property.
    *
-   * @param field              The Java field associated with the property.
-   * @param propertyDescriptor Metadata for the accessor method associated
-   *                           with the property.
-   * @param owner              The entity type for the property.
-   * @param simpleTypeHolder   Metadata for the entity type.
+   * @param property         The persistent property.
+   * @param owner            The entity type for the property.
+   * @param simpleTypeHolder Metadata for the entity type.
    * @throws IllegalArgumentException if {@code owner} or
    *                                  {@code simpleTypeHolder} is
    *                                  {@literal null}.
    */
-  public SimpleMultiChainPersistentProperty(final Field field
-      , final PropertyDescriptor propertyDescriptor
+  public SimpleMultiChainPersistentProperty(final Property property
       , final PersistentEntity<?, MultiChainPersistentProperty> owner
       , final SimpleTypeHolder simpleTypeHolder)
   {
-    super(field, propertyDescriptor, owner, simpleTypeHolder);
+    super(property, owner, simpleTypeHolder);
   }
 
   /**

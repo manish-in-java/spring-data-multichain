@@ -23,8 +23,6 @@ import org.springframework.data.repository.core.RepositoryInformation;
 import org.springframework.data.repository.core.RepositoryMetadata;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;
 
-import java.io.Serializable;
-
 import static org.springframework.util.Assert.notNull;
 
 /**
@@ -56,7 +54,7 @@ public class MultiChainRepositoryFactory extends RepositoryFactorySupport
    * {@inheritDoc}
    */
   @Override
-  public <T, ID extends Serializable> MultiChainEntityInformation<T, ID> getEntityInformation(final Class<T> domainClass)
+  public <T, ID> MultiChainEntityInformation<T, ID> getEntityInformation(final Class<T> domainClass)
   {
     return entityInformationProvider.getEntityInformation(domainClass);
   }

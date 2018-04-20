@@ -47,7 +47,7 @@ public class MultiChainRepositoryConfigurationExtension extends RepositoryConfig
    * {@inheritDoc}
    */
   @Override
-  public String getRepositoryFactoryClassName()
+  public String getRepositoryFactoryBeanClassName()
   {
     return MultiChainRepositoryFactoryBean.class.getName();
   }

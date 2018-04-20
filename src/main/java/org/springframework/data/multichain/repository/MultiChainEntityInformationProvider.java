@@ -18,8 +18,6 @@ package org.springframework.data.multichain.repository;
 
 import org.springframework.data.multichain.repository.support.MultiChainEntityInformation;
 
-import java.io.Serializable;
-
 /**
  * Contract for determining metadata about a domain entity persisted to a
  * MultiChain data stream.
@@ -31,7 +29,8 @@ public interface MultiChainEntityInformationProvider
    *
    * @param domainClass The Java type for the domain entity.
    * @param <T>         The type of domain entity.
+   * @param <ID>        The type of primary key for the domain entity.
    * @return A {@link MultiChainEntityInformation}.
    */
-  <T, ID extends Serializable> MultiChainEntityInformation<T, ID> getEntityInformation(final Class<T> domainClass);
+  <T, ID> MultiChainEntityInformation<T, ID> getEntityInformation(final Class<T> domainClass);
 }

@@ -19,8 +19,6 @@ import org.springframework.data.multichain.mapping.MultiChainPersistentEntity;
 import org.springframework.data.repository.core.support.AbstractEntityInformation;
 import org.springframework.data.repository.core.support.PersistentEntityInformation;
 
-import java.io.Serializable;
-
 /**
  * MultiChain specific implementation of {@link AbstractEntityInformation}
  * that provides access to metadata about an entity class so that entity
@@ -30,7 +28,7 @@ import java.io.Serializable;
  * @param <T>  The domain entity type.
  * @param <ID> The type of unique identifiers for domain entity instances.
  */
-public class MultiChainEntityInformation<T, ID extends Serializable> extends PersistentEntityInformation<T, ID>
+public class MultiChainEntityInformation<T, ID> extends PersistentEntityInformation<T, ID>
 {
   private final MultiChainPersistentEntity<T> persistentEntity;
 
@@ -42,7 +40,7 @@ public class MultiChainEntityInformation<T, ID extends Serializable> extends Per
    * @throws NullPointerException if {@code persistentEntity} is
    *                              {@literal null}.
    */
-  public MultiChainEntityInformation(final MultiChainPersistentEntity<T> persistentEntity)
+  MultiChainEntityInformation(final MultiChainPersistentEntity<T> persistentEntity)
   {
     super(persistentEntity);
 

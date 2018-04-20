@@ -10,5 +10,5 @@ Import-Template:
   org.apache.http.*;version="${apache.http.client.version}",
   org.springframework.*;version="${spring}",
   org.springframework.data.*;version="${spring.data.commons.version}",
-  org.springframework.web.*;version="${spring.android.rest.version}",
+  org.springframework.web.*;version="${spring}",
   org.w3c.*;version="0.0.0"

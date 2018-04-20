@@ -22,13 +22,11 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mapping.model.Property;
 import org.springframework.data.mapping.model.SimpleTypeHolder;
 import org.springframework.data.multichain.mapping.MultiChainPersistentEntity;
 import org.springframework.data.multichain.mapping.MultiChainPersistentProperty;
 import org.springframework.data.util.ClassTypeInformation;
-
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -40,13 +38,11 @@ import static org.junit.Assert.assertNotNull;
 public class MultiChainMappingContextTests
 {
   @Mock
-  private PropertyDescriptor descriptor;
-
-  @Mock
   private SimpleTypeHolder holder;
 
-  private static MultiChainMappingContext context;
-  private static Field                    field;
+  private static MultiChainMappingContext        context;
+  private static MultiChainPersistentEntity<Foo> persistentEntity;
+  private static Property                        property;
 
   /**
    * Sets up objects required to run the tests.
@@ -56,7 +52,9 @@ public class MultiChainMappingContextTests
   {
     context = new MultiChainMappingContext();
 
-    field = Foo.class.getDeclaredField("baz");
+    persistentEntity = getPersistentEntity();
+
+    property = Property.of(persistentEntity.getTypeInformation(), Foo.class.getDeclaredField("baz"));
   }
 
   /**
@@ -66,15 +64,9 @@ public class MultiChainMappingContextTests
   @Test
   public void testCreatePersistentEntity()
   {
-    assertNotNull(context.createPersistentEntity(ClassTypeInformation.from(Foo.class)));
-
-    final MultiChainPersistentEntity<?> subject = context.getPersistentEntity(Foo.class);
-
-    assertNotNull(subject);
-    assertNotNull(subject.getType());
-    assertEquals(Foo.class, subject.getType());
-
-    assertNotNull(subject.getIdProperty());
+    assertNotNull(persistentEntity);
+    assertNotNull(persistentEntity.getType());
+    assertEquals(Foo.class, persistentEntity.getType());
   }
 
   /**
@@ -84,13 +76,22 @@ public class MultiChainMappingContextTests
   @Test
   public void testCreatePersistentProperty()
   {
-    final MultiChainPersistentProperty subject = context.createPersistentProperty(field
-        , descriptor
-        , context.createPersistentEntity(ClassTypeInformation.from(Foo.class))
+    final MultiChainPersistentProperty subject = context.createPersistentProperty(property
+        , persistentEntity
         , holder);
 
     assertNotNull(subject);
-    assertEquals(field.getName(), subject.getName());
+    assertEquals(property.getName(), subject.getName());
+  }
+
+  /**
+   * Gets a {@link MultiChainPersistentEntity} to run the tests.
+   *
+   * @return A {@link MultiChainPersistentEntity}.
+   */
+  private static MultiChainPersistentEntity<Foo> getPersistentEntity()
+  {
+    return context.createPersistentEntity(ClassTypeInformation.from(Foo.class));
   }
 }
 
